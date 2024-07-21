@@ -1,0 +1,52 @@
+﻿@using Task14WeatherApp.Models;
+@model List<CityWeather>;
+
+@{
+    string GetBackground(int temp)
+    {
+        if (temp < 44)
+        {
+            return "cold";
+        }
+        if (temp < 74)
+        {
+            return "normal";
+        }
+        return "hot";
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cites Weather</title>
+    <link rel="stylesheet" href="~/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Weather app</h1>
+
+        <div class="boxes">
+            @foreach (CityWeather city in Model)
+            {
+                <div class="box @GetBackground(city.TemperatureFahrenheit)">
+                    <div class="box-left box-item">
+                        <h4>@city.CityName</h4>
+                        <p>@city.DateAndTime.ToString("hh:mm tt")</p>
+                        <a href="/weather/@city.CityUniqueCode">Details</a>
+                    </div>
+                    <div class="box-right box-item">
+                        <h3>@city.TemperatureFahrenheit</h3>
+                        <p>°F</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+
+</html>
