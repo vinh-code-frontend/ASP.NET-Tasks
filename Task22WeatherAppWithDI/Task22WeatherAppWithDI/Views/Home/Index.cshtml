@@ -1,0 +1,34 @@
+﻿@model List<CityWeather>;
+
+
+@{
+    string GetBackground(int temp)
+    {
+        if (temp < 44)
+        {
+            return "cold";
+        }
+        if (temp < 74)
+        {
+            return "normal";
+        }
+        return "hot";
+    }
+}
+
+<div class="boxes">
+    @foreach (CityWeather city in Model)
+    {
+        <div class="box @GetBackground(city.TemperatureFahrenheit)">
+            <div class="box-left box-item">
+                <h4>@city.CityName</h4>
+                <p>@city.DateAndTime.ToString("hh:mm tt")</p>
+                <a href="/weather/@city.CityUniqueCode">Details</a>
+            </div>
+            <div class="box-right box-item">
+                <h3>@city.TemperatureFahrenheit</h3>
+                <p>°F</p>
+            </div>
+        </div>
+    }
+</div>
