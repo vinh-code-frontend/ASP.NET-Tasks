@@ -1,0 +1,35 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Task24SocialMediaLinks.Models
+@model SocialMediaLinksOptions
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Media Links</title>
+    <link rel="stylesheet" href="~/style.css"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Social Media Links</h1>
+        <div class="boxes">
+            <div class="box">
+                <a href="@Model.Facebook" target="_blank">Facebook</a>
+            </div class="box">
+            <environment>
+                <div class="box">
+                    <a href="@Model.Instagram" target="_blank">Instagram</a>
+                </div>
+            </environment>
+            <div class="box">
+                <a href="@Model.Twitter" target="_blank">Twitter</a>
+            </div>
+            <div class="box">
+                <a href="@Model.Youtube" target="_blank">Youtube</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
